@@ -45,7 +45,7 @@ int main()
   }
 
   vorne = 0;
-  hinten = AnzahlZeichen - 1;
+  hinten = AnzahlZeichen - 1; //-1, da im Array mit 0 angefangen wird
 
     for ( hinten; hinten >= vorne; hinten = --hinten )
     {
