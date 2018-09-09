@@ -13,6 +13,8 @@ In der Informatik ist ein Palindrom eine Zeichenkette, die vorwärts wie rückw�
   Wahrscheinlich kann man die Gesamtanzahl der Zeichen aus 1. sinnvoll verwenden.
 4. Fertig?
 
+Fazit:
+2. Hilft einem nicht, da tacOcat auch ein Palindrom ist
 */
 
 #include <stdio.h>
@@ -29,9 +31,12 @@ int main()
   scanf("%s", &Zeichenkette);
   printf("\nDie Pruefung fuer folgende Zeichenkette wird gestartet: %s\n", &Zeichenkette);
 
-  for  (i = 0; Zeichenkette[i] != '\0'; ++i);
-  printf("Anzahl an Zeichen: %i\n", i);
-  AnzahlZeichen = i;
+  AnzahlZeichen = printf("%s", Zeichenkette);
+  printf("\nAnzahl an Zeichen: %i\n", AnzahlZeichen);
+  //Alternative:
+  //for  (i = 0; Zeichenkette[i] != '\0'; ++i);
+  //printf("Anzahl an Zeichen: %i\n", i);
+  //AnzahlZeichen = i;
 
   for ( int a = 0; a <= AnzahlZeichen; a = a + 1)
   {
