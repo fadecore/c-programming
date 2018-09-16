@@ -23,13 +23,13 @@ int main()
 {
   char Zeichenkette[100];
   int AnzahlZeichen;
-  int i = 0;
+  //int i = 0; //Bei Verwendung von for fuer zaehlen der zeichen
   int vorne, hinten;
-  float  j; //Zur Prüfung auf gerade Zahlen
-  printf("Polindrom-Pruefer");
+  //float  j; //Zur Prüfung auf gerade Zahlen
+  printf("Polindrom-Pruefer\n");
   printf("Geben Sie das Wort ein, welches geprueft werden soll: ");
   scanf("%s", &Zeichenkette);
-  printf("\nDie Pruefung fuer folgende Zeichenkette wird gestartet: %s\n", &Zeichenkette);
+  printf("\nDie Pruefung fuer folgende Zeichenkette wird gestartet: %s\n", Zeichenkette);
 
   AnzahlZeichen = printf("%s", Zeichenkette);
   printf("\nAnzahl an Zeichen: %i\n", AnzahlZeichen);
@@ -63,5 +63,5 @@ int main()
     printf("### Glueckwunsch! Du hast ein Palindrom gefunden! ###");
 
 
-  //return (0);
+    return(0);
 }
