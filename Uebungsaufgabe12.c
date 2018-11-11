@@ -1,0 +1,55 @@
+/*
+Programmieren Sie folgendes Zahlenspiel:
+Der Computer "merkt" sich eine Zufallszahl zwischen 1 und 15, die der Spieler
+(=Benutzer) erraten soll. Der Spieler hat insgesamt drei Versuche.
+Nach jedem falschen Versuch gibt der Computer an, ob die angegebene Zahl zu klein
+oder zu groß ist. Ist auch der dritte Versuch erfolglos, wird die gesuchte Zahl
+ausgegeben. Der Spieler hat gewonnen, wenn er spätestens im dritten Versuch die Zahl
+errät. Er soll das Spiel beliebig oft wiederholen können. Verwenden Sie die Systemzeit
+zur Initialisierung des Zufallsgenerators wie folgt:
+*/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
+
+int main()
+{
+  int weiter = 0;
+  do {
+        int zufallszahl;
+        int eingabe = 0;
+        int versuch = 1;
+        int versuche = 3;
+
+        time_t sec;
+        sec = time(NULL);           // Zeit in Sekunden ermitteln
+        srand(sec);                 // Initialisierung
+        zufallszahl = sec % 16;   // Modulo 16 für Rest 1-15
+
+        while ( versuch <= versuche ) {
+          printf_s("\n\n\nZu erratende Zufallszahl ist: %i\n", zufallszahl);
+          printf_s("Geben Sie ihre Zufallszahl zwischen 1 und 15 an: ");
+          fflush(stdout);
+          scanf_s("%2d", &eingabe);
+
+            if ( zufallszahl == eingabe ) {
+              printf_s("\nZahlen sind gleich: TOP!\n\n");
+              versuch = versuche + 1; // Abbruchbedingung
+            } else {
+              printf_s("\nZahlen sind falsch! ");
+              versuch++;
+            }
+
+          }
+
+        printf_s("\n####### Spiel vorbei! #######\n Wollen Sie erneut spielen geben Sie 1 ein: ");
+        fflush(stdout);
+        scanf_s("%1d", &weiter);
+
+      } while ( weiter == 1 );
+
+  return(0);
+
+}
