@@ -16,18 +16,25 @@ zur Initialisierung des Zufallsgenerators wie folgt:
 
 int main()
 {
-  int weiter = 0;
+  int weiter = 0; // Fuer do-while/Abfrage ob User weitermachen möchte
   do {
-        int zufallszahl;
-        int eingabe = 0;
-        int versuch = 1;
-        int versuche = 3;
+        int zufallszahl = 0;        // Wird von Zufallsgeneratopr genutzt
+        int eingabe = 0;            // Reserviert fuer Benutzereingabe
+        int versuch = 1;            // Starte mit Versuch 1
+        int versuche = 3;           // Anzahl der möglicher Versuche
 
-        time_t sec;
-        sec = time(NULL);           // Zeit in Sekunden ermitteln
-        srand(sec);                 // Initialisierung
-        zufallszahl = sec % 16;   // Modulo 16 für Rest 1-15
 
+        // Zufallsgenerator (Zahl 1 - 15)
+        while (zufallszahl == 0) {    // While, da mod-Berechnung auch 0 ergeben kann,
+                                      // dann muss nochmal generiert werden
+          time_t sec;
+          sec = time(NULL);           // Zeit in Sekunden ermitteln
+          srand(sec);                 // Initialisierung
+          zufallszahl = sec % 16;     // Modulo 16 für Rest 1-15,
+        }
+
+        // Wenn die Zahl des aktuellen Versuchs kleiner oder gleich der Zahl "versuche" ist,
+        // wieder nach einer Zufallszahl fragen und auswerten
         while ( versuch <= versuche ) {
           printf_s("\n\n\nZu erratende Zufallszahl ist: %i\n", zufallszahl);
           printf_s("Geben Sie ihre Zufallszahl zwischen 1 und 15 an: ");
@@ -36,7 +43,8 @@ int main()
 
             if ( zufallszahl == eingabe ) {
               printf_s("\nZahlen sind gleich: TOP!\n\n");
-              versuch = versuche + 1; // Abbruchbedingung
+              versuch = versuche + 1; // Erfuellt dann die Abbruchbedingung,
+                                      // da die Zahls versuch dann hoeher als die der maximalen "versuche" ist
             } else {
               printf_s("\nZahlen sind falsch! ");
               versuch++;
