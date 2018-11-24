@@ -40,11 +40,11 @@ int main()
   scanf("%ld", &lMaxEuro);
   printf("\n%10s %10s\n", " EUR", "USD");
 
-  /*
+
   for (lEuro = 1; lEuro <= lMaxEuro; lEuro++) {
     printf("%10ld %10.2f\n", lEuro, lEuro/dKurs);
   }
-  */
+
   lEuro = 1;
   while (lEuro <= lMaxEuro) {
     printf("%10ld %10.2f\n", lEuro, lEuro/dKurs);

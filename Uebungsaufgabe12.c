@@ -8,6 +8,7 @@ ausgegeben. Der Spieler hat gewonnen, wenn er spätestens im dritten Versuch die
 errät. Er soll das Spiel beliebig oft wiederholen können. Verwenden Sie die Systemzeit
 zur Initialisierung des Zufallsgenerators wie folgt:
 */
+#define _CRT_SECURE_NO_WARNINGS 1  
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -25,28 +26,31 @@ int main()
 
         time_t sec;
         sec = time(NULL);           // Zeit in Sekunden ermitteln
+        //printf("Ausgabe von sec: &d", sec);
         srand(sec);                 // Initialisierung
+        //printf("Ausgabe von sec nach srand: &i", sec);
         zufallszahl = sec % 16;   // Modulo 16 für Rest 1-15
 
         while ( versuch <= versuche ) {
-          printf_s("\n\n\nZu erratende Zufallszahl ist: %i\n", zufallszahl);
-          printf_s("Geben Sie ihre Zufallszahl zwischen 1 und 15 an: ");
+          printf("\n\n\nZu erratende Zufallszahl ist: %i\n", zufallszahl);
+          printf("Geben Sie ihre Zufallszahl zwischen 1 und 15 an: ");
           fflush(stdout);
-          scanf_s("%2d", &eingabe);
+          scanf("%2d", &eingabe);
 
             if ( zufallszahl == eingabe ) {
-              printf_s("\nZahlen sind gleich: TOP!\n\n");
+              printf("\nZahlen sind gleich: TOP!\n\n");
               versuch = versuche + 1; // Abbruchbedingung
             } else {
-              printf_s("\nZahlen sind falsch! ");
+              printf("\nZahlen sind falsch! ");
               versuch++;
             }
 
+
           }
 
-        printf_s("\n####### Spiel vorbei! #######\n Wollen Sie erneut spielen geben Sie 1 ein: ");
+        printf("\n####### Spiel vorbei! #######\nWollen Sie erneut spielen geben Sie 1 ein: ");
         fflush(stdout);
-        scanf_s("%1d", &weiter);
+        scanf("%1d", &weiter);
 
       } while ( weiter == 1 );
 
